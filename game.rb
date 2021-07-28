@@ -19,7 +19,7 @@ class Game
         break
       else
         @player.turns -= 1
-        @board.generate_clues(@player.guess)
+        @board.generate_clues(@player.guess, @board.code)
         @board.show_clues
       end
     end
