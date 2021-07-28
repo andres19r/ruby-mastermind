@@ -10,8 +10,13 @@ class Game
     @player = Player.new("Human")
   end
   def start_game
+    puts "Welcome to Mastermind"
+    puts "Try to guess the secret code, it has 4 numbers out of 6"
+    puts "You have 12 tries"
+    t = 1
     while @player.turns > 0
-      puts "Turn ##{@player.turns}"
+      puts "\nTry ##{t}"
+      t += 1
       @player.take_guess
       if @board.winner?(@player.guess)
         puts "CONGRATS!!! YOU WIN THE GAME!"
@@ -32,5 +37,4 @@ end
 
 g = Game.new
 g.add_player
-p g.board.code
 g.start_game

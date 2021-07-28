@@ -5,7 +5,7 @@ class Player
     @turns = 12
   end
   def take_guess
-    puts "Take a guess"
+    print "=> "
     @guess = gets.chomp.split("").map{ |el| el.to_i }
   end
 end
