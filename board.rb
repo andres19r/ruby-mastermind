@@ -14,23 +14,24 @@ class Board
     return @code == guess ? true : false
   end
   def generate_clues(guess)
-    i = 0
-    j = 0
+    i = 3
     @clues = []
-    while i < 4
-      while j < 4
-        if @code[i] == guess[j]
-          if i == j
-            @clues << 1
-          else
-            @clues << 0
-          end
+    code_aux = @code.take(4)
+    until guess.empty?
+      g = guess.pop
+      if code_aux.include?(g)
+        ic = code_aux.index(g)
+        if i == ic
+          @clues << 1
+        else
+          @clues << 0
         end
-        j += 1
+        code_aux.delete_at(ic)
       end
-      i += 1
-      j = 0
+      puts "aux #{code_aux}"
+      i -= 1
     end
+    @clues.sort.reverse
   end
   def show_clues
     puts "Clues:"

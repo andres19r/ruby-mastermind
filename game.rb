@@ -13,14 +13,14 @@ class Game
     while @player.turns > 0
       puts "Turn ##{@player.turns}"
       @player.take_guess
-      @board.generate_clues(@player.guess)
-      @board.show_clues
       if @board.winner?(@player.guess)
         puts "CONGRATS!!! YOU WIN THE GAME!"
         puts "The code was #{@board.code}"
         break
       else
         @player.turns -= 1
+        @board.generate_clues(@player.guess)
+        @board.show_clues
       end
     end
     if @player.turns == 0
